@@ -1,0 +1,148 @@
+#include <stdio.h>
+
+// Function prototypes
+void khaokhamu();
+void khaomunkai();
+void khaokapaomukop();
+void Total();
+
+void main(){
+
+    //switch case
+    int control = 1; //control the variable for loop
+    int choice = 0; //Variable to store user's choice
+
+    //menu_price
+    int khaokhamu_price = 30000;
+    int khaomunkai_price = 35000;
+    int khaokapaomukop_price = 40000;
+
+    //total_price
+    int total = 0;
+
+    //amount_of_menu
+    int amount_of_khaokhamu = 0;
+    int amount_of_khaomunkai = 0;
+    int amount_of_khaokapaomukop = 0;
+
+    //Variable to store input of amount
+    int amount_input_1;
+    int amount_input_2;
+    int amount_input_3;
+
+    //Intro of our restaurant
+    printf("\n========[ Welcome to RESTAURANT ]========\n");
+    printf("\nPlease select your menu :\n\n");
+
+
+    do {
+
+        if (choice > 0){
+            printf("\nPlease select your next menu :\n\n");
+        }
+
+        //choice's list
+        printf("1. khao kha mu (30000 kip)\n");
+        printf("2. khao mun kai (35000 kip)\n");
+        printf("3. khao kapao mukop (40000 kip)\n");
+        printf("4. Total\n");
+        printf("5. Exit\n\n");
+
+        printf("Please enter your choice : ");
+        scanf("%d",&choice);
+
+        
+
+        switch (choice){
+            case 1:
+                khaokhamu(amount_input_1, &total, &amount_of_khaokhamu, khaokhamu_price);
+                break;
+            case 2:
+                khaomunkai(amount_input_2, &total, &amount_of_khaomunkai, khaomunkai_price);
+                break;
+            case 3:
+                khaokapaomukop(amount_input_3, &total, &amount_of_khaokapaomukop, khaokapaomukop_price);
+                break;
+            case 4:
+                Total(amount_of_khaokhamu, amount_of_khaomunkai, amount_of_khaokapaomukop, total);
+                control = 0;
+                break;
+            case 5:
+                printf("\n======================");
+                printf("\nExitting program\n");
+                printf("======================\n\n");
+                control = 0;
+                break;
+            default:
+                printf("\n======================");
+                printf("\nInvalid choice\n");
+                printf("======================\n");
+                break;
+            }
+
+        } while (control);
+
+}
+
+void khaokhamu(int amount_input_1, int *total, int *amount_of_khaokhamu, int menu_price_1){
+
+    printf("Enter an amount of khaokhamu : ");
+    scanf("%d",&amount_input_1);
+    
+    printf("\n======================");
+    printf("\nYou choose khaokhamu\n");
+    printf("======================\n");
+
+    *total += menu_price_1 * amount_input_1;
+    *amount_of_khaokhamu += amount_input_1;
+
+}
+
+void khaomunkai(int amount_input_2, int *total, int *amount_of_khaomunkai, int menu_price_2){
+
+    printf("Enter an amount of khaomunkai : ");
+    scanf("%d",&amount_input_2);
+    
+    printf("\n======================");
+    printf("\nYou choose khaomunkai\n");
+    printf("======================\n");
+
+    *total += menu_price_2 * amount_input_2;
+    *amount_of_khaomunkai += amount_input_2;
+
+}
+
+void khaokapaomukop(int amount_input_3, int *total, int *amount_of_khaokapaomukop, int menu_price_3){
+
+    printf("Enter an amount of khaokapaomukop : ");
+    scanf("%d",&amount_input_3);
+    
+    printf("\n======================");
+    printf("\nYou choose khaokapaomukop\n");
+    printf("======================\n");
+
+    *total += menu_price_3 * amount_input_3;
+    *amount_of_khaokapaomukop += amount_input_3;
+
+}
+
+void Total(int amount_of_khaokhamu, int amount_of_khaomunkai, int amount_of_khaokapaomukop, int total){
+
+    printf("\n===========================\n");
+
+    if (amount_of_khaokhamu > 0){
+        printf("Amount of Khaokhamu = %d\n",amount_of_khaokhamu);
+    }
+
+    if (amount_of_khaomunkai > 0){
+        printf("Amount of Khaomunkai = %d\n",amount_of_khaomunkai);
+    }
+
+    if (amount_of_khaokapaomukop > 0){
+        printf("Amount of Khaokapaomukop = %d\n",amount_of_khaokapaomukop);
+    }
+
+    printf("===========================\n");
+    printf("Total = %d kip\n\n",total);
+
+}
