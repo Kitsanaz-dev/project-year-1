@@ -55,13 +55,13 @@ void main(){
 
         switch (choice){
             case 1:
-                khaokhamu(amount_input_1, &total, &amount_of_khaokhamu, khaokhamu_price);
+                khaokhamu(&total, &amount_of_khaokhamu, khaokhamu_price, amount_input_1);
                 break;
             case 2:
-                khaomunkai(amount_input_2, &total, &amount_of_khaomunkai, khaomunkai_price);
+                khaomunkai(&total, &amount_of_khaomunkai, khaomunkai_price, amount_input_2);
                 break;
             case 3:
-                khaokapaomukop(amount_input_3, &total, &amount_of_khaokapaomukop, khaokapaomukop_price);
+                khaokapaomukop(&total, &amount_of_khaokapaomukop, khaokapaomukop_price, amount_input_3);
                 break;
             case 4:
                 Total(amount_of_khaokhamu, amount_of_khaomunkai, amount_of_khaokapaomukop, total);
@@ -84,7 +84,7 @@ void main(){
 
 }
 
-void khaokhamu(int amount_input_1, int *total, int *amount_of_khaokhamu, int menu_price_1){
+void khaokhamu(int *total, int *amount_of_khaokhamu, int menu_price_1, int amount_input_1){
 
     printf("Enter an amount of khaokhamu : ");
     scanf("%d",&amount_input_1);
@@ -98,7 +98,7 @@ void khaokhamu(int amount_input_1, int *total, int *amount_of_khaokhamu, int men
 
 }
 
-void khaomunkai(int amount_input_2, int *total, int *amount_of_khaomunkai, int menu_price_2){
+void khaomunkai(int *total, int *amount_of_khaomunkai, int menu_price_2 ,int amount_input_2){
 
     printf("Enter an amount of khaomunkai : ");
     scanf("%d",&amount_input_2);
@@ -112,7 +112,7 @@ void khaomunkai(int amount_input_2, int *total, int *amount_of_khaomunkai, int m
 
 }
 
-void khaokapaomukop(int amount_input_3, int *total, int *amount_of_khaokapaomukop, int menu_price_3){
+void khaokapaomukop(int *total, int *amount_of_khaokapaomukop, int menu_price_3, int amount_input_3){
 
     printf("Enter an amount of khaokapaomukop : ");
     scanf("%d",&amount_input_3);
