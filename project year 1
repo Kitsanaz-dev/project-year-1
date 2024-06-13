@@ -25,7 +25,6 @@ void main(){
     printf("\n========[ Welcome to RESTAURANT ]========\n");
     printf("\nPlease select your menu :\n\n");
 
-
     do {
 
         if (choice > 0){
@@ -41,8 +40,6 @@ void main(){
 
         printf("Please enter your choice : ");
         scanf("%d",&choice);
-
-        
 
         switch (choice){
             case 1:
@@ -76,12 +73,17 @@ void main(){
 }
 
 void processOrder(int *total, int *amount, int price, const char *menu_name){
+
     int amount_input;
+
     printf("Enter amount of %s: ",menu_name);
     scanf("%d", &amount_input);
+
     *total += price * amount_input;
     *amount += amount_input;
-    printf("\nYou chose %s\n",menu_name);
+
+    printf("\nYou chose %d %s\n",amount_input, menu_name);
+
 }
 
 
