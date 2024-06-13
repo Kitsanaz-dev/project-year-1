@@ -10,6 +10,7 @@ void main(){
     int control = 1; //control the variable for loop
     int choice = 0; //Variable to store user's choice
 
+    //amount of menu
     int khaokhamu = 0;
     int khaomunkai = 0;
     int khaokapaomukop = 0;
@@ -85,7 +86,6 @@ void processOrder(int *total, int *amount, int price, const char *menu_name){
     printf("\nYou chose %d %s\n",amount_input, menu_name);
 
 }
-
 
 void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
 
