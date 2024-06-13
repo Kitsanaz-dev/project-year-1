@@ -1,10 +1,8 @@
 #include <stdio.h>
 
 // Function prototypes
-void khaokhamu();
-void khaomunkai();
-void khaokapaomukop();
-void Total();
+void processOrder(int *total, int *amount, int price, const char *menu_name);
+void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total);
 
 void main(){
 
@@ -12,23 +10,16 @@ void main(){
     int control = 1; //control the variable for loop
     int choice = 0; //Variable to store user's choice
 
+    int khaokhamu = 0;
+    int khaomunkai = 0;
+    int khaokapaomukop = 0;
+
     //menu_price
-    int khaokhamu_price = 30000;
-    int khaomunkai_price = 35000;
-    int khaokapaomukop_price = 40000;
+    const int khaokhamu_price = 30000;
+    const int khaomunkai_price = 35000;
+    const int khaokapaomukop_price = 40000;
 
-    //total_price
     int total = 0;
-
-    //amount_of_menu
-    int amount_of_khaokhamu = 0;
-    int amount_of_khaomunkai = 0;
-    int amount_of_khaokapaomukop = 0;
-
-    //Variable to store input of amount
-    int amount_input_1;
-    int amount_input_2;
-    int amount_input_3;
 
     //Intro of our restaurant
     printf("\n========[ Welcome to RESTAURANT ]========\n");
@@ -55,21 +46,21 @@ void main(){
 
         switch (choice){
             case 1:
-                khaokhamu(&total, &amount_of_khaokhamu, khaokhamu_price, amount_input_1);
+                processOrder(&total, &khaokhamu, khaokhamu_price, "Khaokhamu");
                 break;
             case 2:
-                khaomunkai(&total, &amount_of_khaomunkai, khaomunkai_price, amount_input_2);
+                processOrder(&total, &khaomunkai, khaomunkai_price, "Khaomunkai");
                 break;
             case 3:
-                khaokapaomukop(&total, &amount_of_khaokapaomukop, khaokapaomukop_price, amount_input_3);
+                processOrder(&total, &khaokapaomukop, khaokapaomukop_price, "Khaokapaomukop");
                 break;
             case 4:
-                Total(amount_of_khaokhamu, amount_of_khaomunkai, amount_of_khaokapaomukop, total);
+                showTotal(khaokhamu, khaomunkai, khaokapaomukop, total);
                 control = 0;
                 break;
             case 5:
                 printf("\n======================");
-                printf("\nExitting program\n");
+                printf("\nExitting program...\n");
                 printf("======================\n\n");
                 control = 0;
                 break;
@@ -84,62 +75,30 @@ void main(){
 
 }
 
-void khaokhamu(int *total, int *amount_of_khaokhamu, int menu_price_1, int amount_input_1){
-
-    printf("Enter an amount of khaokhamu : ");
-    scanf("%d",&amount_input_1);
-    
-    printf("\n======================");
-    printf("\nYou choose khaokhamu\n");
-    printf("======================\n");
-
-    *total += menu_price_1 * amount_input_1;
-    *amount_of_khaokhamu += amount_input_1;
-
+void processOrder(int *total, int *amount, int price, const char *menu_name){
+    int amount_input;
+    printf("Enter amount of %s: ",menu_name);
+    scanf("%d", &amount_input);
+    *total += price * amount_input;
+    *amount += amount_input;
+    printf("\nYou chose %s\n",menu_name);
 }
 
-void khaomunkai(int *total, int *amount_of_khaomunkai, int menu_price_2 ,int amount_input_2){
 
-    printf("Enter an amount of khaomunkai : ");
-    scanf("%d",&amount_input_2);
-    
-    printf("\n======================");
-    printf("\nYou choose khaomunkai\n");
-    printf("======================\n");
-
-    *total += menu_price_2 * amount_input_2;
-    *amount_of_khaomunkai += amount_input_2;
-
-}
-
-void khaokapaomukop(int *total, int *amount_of_khaokapaomukop, int menu_price_3, int amount_input_3){
-
-    printf("Enter an amount of khaokapaomukop : ");
-    scanf("%d",&amount_input_3);
-    
-    printf("\n======================");
-    printf("\nYou choose khaokapaomukop\n");
-    printf("======================\n");
-
-    *total += menu_price_3 * amount_input_3;
-    *amount_of_khaokapaomukop += amount_input_3;
-
-}
-
-void Total(int amount_of_khaokhamu, int amount_of_khaomunkai, int amount_of_khaokapaomukop, int total){
+void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
 
     printf("\n===========================\n");
 
-    if (amount_of_khaokhamu > 0){
-        printf("Amount of Khaokhamu = %d\n",amount_of_khaokhamu);
+    if (khaokhamu > 0){
+        printf("Amount of Khaokhamu = %d\n",khaokhamu);
     }
 
-    if (amount_of_khaomunkai > 0){
-        printf("Amount of Khaomunkai = %d\n",amount_of_khaomunkai);
+    if (khaomunkai > 0){
+        printf("Amount of Khaomunkai = %d\n",khaomunkai);
     }
 
-    if (amount_of_khaokapaomukop > 0){
-        printf("Amount of Khaokapaomukop = %d\n",amount_of_khaokapaomukop);
+    if (khaokapaomukop > 0){
+        printf("Amount of Khaokapaomukop = %d\n",khaokapaomukop);
     }
 
     printf("===========================\n");
