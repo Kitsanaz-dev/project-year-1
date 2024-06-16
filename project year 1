@@ -63,7 +63,6 @@ void main(){
                 printf("======================\n");
                 break;
             }
-
         } while (choice != 5);
 
 }
@@ -79,7 +78,6 @@ void processOrder(int *total, int *amount, int price, const char *menu_name){
     *amount += amount_input;
 
     printf("\nYou chose %d %s\n",amount_input, menu_name);
-
 }
 
 void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
@@ -100,7 +98,6 @@ void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
 
     printf("===========================\n");
     printf("Total = %d kip\n\n",total);
-
 }
 
 void menuList(){
