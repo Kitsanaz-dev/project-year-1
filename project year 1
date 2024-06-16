@@ -1,26 +1,26 @@
 #include <stdio.h>
+#include <stdlib.h>
 
+int choice = 0;
+
+//amount of menu
+int khaokhamu = 0;
+int khaomunkai = 0;
+int khaokapaomukop = 0;
+
+//menu_price
+const int khaokhamu_price = 30000;
+const int khaomunkai_price = 35000;
+const int khaokapaomukop_price = 40000;
+
+int total = 0;
+    
 // Function prototypes
 void processOrder();
 void showTotal();
+void menuList();
 
 void main(){
-
-    //switch case
-    int control = 1; //control the variable for loop
-    int choice = 0; //Variable to store user's choice
-
-    //amount of menu
-    int khaokhamu = 0;
-    int khaomunkai = 0;
-    int khaokapaomukop = 0;
-
-    //menu_price
-    const int khaokhamu_price = 30000;
-    const int khaomunkai_price = 35000;
-    const int khaokapaomukop_price = 40000;
-
-    int total = 0;
 
     //Intro of our restaurant
     printf("\n========[ Welcome to RESTAURANT ]========\n");
@@ -32,12 +32,7 @@ void main(){
             printf("\nPlease select your next menu :\n\n");
         }
 
-        //choice's list
-        printf("1. khao kha mu (30000 kip)\n");
-        printf("2. khao mun kai (35000 kip)\n");
-        printf("3. khao kapao mukop (40000 kip)\n");
-        printf("4. Total\n");
-        printf("5. Exit\n\n");
+        menuList();      
 
         printf("Please enter your choice : ");
         scanf("%d",&choice);
@@ -54,13 +49,13 @@ void main(){
                 break;
             case 4:
                 showTotal(khaokhamu, khaomunkai, khaokapaomukop, total);
-                control = 0;
+                exit(0);
                 break;
             case 5:
                 printf("\n======================");
                 printf("\nExitting program...\n");
                 printf("======================\n\n");
-                control = 0;
+                exit(0);
                 break;
             default:
                 printf("\n======================");
@@ -69,7 +64,7 @@ void main(){
                 break;
             }
 
-        } while (control);
+        } while (choice != 5);
 
 }
 
@@ -106,4 +101,12 @@ void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
     printf("===========================\n");
     printf("Total = %d kip\n\n",total);
 
+}
+
+void menuList(){
+    printf("[1] khao kha mu 30000 kip\n");
+    printf("[2] khao mun kai 35000 kip\n");
+    printf("[3] khao kapao mukop 40000 kip\n");
+    printf("[4] Total\n");
+    printf("[5] Exit\n\n");
 }
