@@ -59,7 +59,7 @@ void main(){
                 break;
             default:
                 printf("\n======================");
-                printf("\nInvalid choice\n");
+                printf("\nInvalid choice, Please try again\n");
                 printf("======================\n");
                 break;
             }
@@ -73,6 +73,13 @@ void processOrder(int *total, int *amount, int price, const char *menu_name){
 
     printf("Enter amount of %s: ",menu_name);
     scanf("%d", &amount_input);
+
+    if (amount_input > 20){
+        printf("\n======================\n");
+        printf("That's too much, Please try again\n");
+        printf("======================\n");
+        return;
+    }
 
     *total += price * amount_input;
     *amount += amount_input;
