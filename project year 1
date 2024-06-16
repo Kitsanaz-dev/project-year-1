@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int choice = 0;
-
 //amount of menu
 int khaokhamu = 0;
 int khaomunkai = 0;
@@ -21,6 +19,8 @@ void showTotal();
 void menuList();
 
 void main(){
+
+    int choice = 0;
 
     //Intro of our restaurant
     printf("\n========[ Welcome to RESTAURANT ]========\n");
