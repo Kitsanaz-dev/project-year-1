@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 //amount of menu
 int khaokhamu = 0;
@@ -14,6 +15,7 @@ const int khaokapaomukop_price = 40000;
 int total = 0;
     
 // Function prototypes
+void greetingBaseOnTime();
 void processOrder();
 void showTotal();
 void menuList();
@@ -22,15 +24,9 @@ void main(){
 
     int choice = 0;
 
-    //Intro of our restaurant
-    printf("\n========[ Welcome to RESTAURANT ]========\n");
-    printf("\nPlease select your menu :\n\n");
+    greetingBaseOnTime();
 
     do {
-
-        if (choice > 0){
-            printf("\nPlease select your next menu :\n\n");
-        }
 
         menuList();      
 
@@ -52,19 +48,43 @@ void main(){
                 exit(0);
                 break;
             case 5:
-                printf("\n======================");
+                printf("\n====================================");
                 printf("\nExitting program...\n");
-                printf("======================\n\n");
+                printf("====================================\n\n");
                 exit(0);
                 break;
             default:
-                printf("\n======================");
+                printf("\n====================================");
                 printf("\nInvalid choice, Please try again\n");
-                printf("======================\n");
+                printf("====================================\n");
                 break;
             }
         } while (choice != 5);
 
+}
+
+void greetingBaseOnTime(void){
+
+    time_t current_time;
+    struct tm *local_time;
+
+    time(&current_time);
+    local_time = localtime(&current_time);
+    int hour = local_time->tm_hour;
+
+    printf("\nCurrent time: %s \n", ctime(&current_time));
+
+    if (hour < 12) {
+        printf("Good morning!\n");
+    } 
+    else if (hour < 18) {
+        printf("Good afternoon!\n");
+    } 
+    else {
+        printf("Good evening!\n");
+    }
+    printf("\n==========[ Welcome to RESTAURANT ]==========\n");
+    printf("\nPlease select your menu :\n\n");
 }
 
 void processOrder(int *total, int *amount, int price, const char *menu_name){
@@ -75,16 +95,19 @@ void processOrder(int *total, int *amount, int price, const char *menu_name){
     scanf("%d", &amount_input);
 
     if (amount_input > 20){
-        printf("\n======================\n");
+        printf("\n====================================\n");
         printf("That's too much, Please try again\n");
-        printf("======================\n");
+        printf("====================================\n");
         return;
     }
 
     *total += price * amount_input;
     *amount += amount_input;
 
-    printf("\nYou chose %d %s\n",amount_input, menu_name);
+    printf("\n====================================\n");
+    printf("You chose %d %s\n",amount_input, menu_name);
+    printf("====================================\n");
+    printf("\nPlease select your next menu :\n\n");
 }
 
 void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
