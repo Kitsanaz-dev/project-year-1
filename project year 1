@@ -14,7 +14,7 @@ void showTotal();
 void showOrder();
 void menuList();
 
-int main() {
+void main() {
 
     int choice = 0;
     int control = 1;
@@ -52,8 +52,6 @@ int main() {
                 break;
         }
     }
-
-    return 0;
 }
 
 void processOrder(int *total, int *quantity, int price, const char *menu_name) {
