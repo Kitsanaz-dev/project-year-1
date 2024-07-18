@@ -19,10 +19,11 @@ void main() {
     int choice = 0;
     int control = 1;
 
+    printf("\n==========[ Welcome to RESTAURANT ]==========\n");
+    printf("\nPlease select your menu :\n\n");
+
     while(control){
 
-        printf("\n==========[ Welcome to RESTAURANT ]==========\n");
-        printf("\nPlease select your menu :\n\n");
         menuList();      
 
         printf("Please enter your choice: ");
