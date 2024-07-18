@@ -1,139 +1,100 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-//amount of menu
-int khaokhamu = 0;
-int khaomunkai = 0;
-int khaokapaomukop = 0;
+int quantities[7] = {0, 0, 0, 0, 0, 0, 0};
 
-//menu_price
-const int khaokhamu_price = 30000;
-const int khaomunkai_price = 35000;
-const int khaokapaomukop_price = 40000;
+const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
+
+const char *menu_names[7] = {"Stewed pork with rice", "Steamed chicken with rice", "Roasted duck with rice", "BBQ red pork with rice", "Crispy with rice", "Pepsi", "Tigerhead water"};
 
 int total = 0;
-    
+
 // Function prototypes
-void greetingBaseOnTime();
 void processOrder();
 void showTotal();
+void showOrder();
 void menuList();
 
-void main(){
+int main() {
 
     int choice = 0;
+    int control = 1;
 
-    greetingBaseOnTime();
+    while(control){
 
-    do {
-
+        printf("\n==========[ Welcome to RESTAURANT ]==========\n");
+        printf("\nPlease select your menu :\n\n");
         menuList();      
 
-        printf("Please enter your choice : ");
-        scanf("%d",&choice);
+        printf("Please enter your choice: ");
+        scanf("%d", &choice);
 
-        switch (choice){
-            case 1:
-                processOrder(&total, &khaokhamu, khaokhamu_price, "Khaokhamu");
+        switch (choice) {
+            case 1: case 2: case 3: case 4: case 5: case 6: case 7:
+                processOrder(&total, &quantities[choice - 1], prices[choice - 1], menu_names[choice - 1]);
                 break;
-            case 2:
-                processOrder(&total, &khaomunkai, khaomunkai_price, "Khaomunkai");
+            case 8:
+                showOrder(quantities, prices, menu_names);
                 break;
-            case 3:
-                processOrder(&total, &khaokapaomukop, khaokapaomukop_price, "Khaokapaomukop");
+            case 9:
+                showTotal(quantities, prices, total);
+                control = 0;
                 break;
-            case 4:
-                showTotal(khaokhamu, khaomunkai, khaokapaomukop, total);
-                exit(0);
-                break;
-            case 5:
+            case 10:
                 printf("\n====================================");
-                printf("\nExitting program...\n");
+                printf("\nExiting program...\n");
                 printf("====================================\n\n");
-                exit(0);
+                control = 0;
                 break;
             default:
                 printf("\n====================================");
                 printf("\nInvalid choice, Please try again\n");
                 printf("====================================\n");
                 break;
-            }
-        } while (choice != 5);
-
-}
-
-void greetingBaseOnTime(void){
-
-    time_t current_time;
-    struct tm *local_time;
-
-    time(&current_time);
-    local_time = localtime(&current_time);
-    int hour = local_time->tm_hour;
-
-    printf("\nCurrent time: %s \n", ctime(&current_time));
-
-    if (hour < 12) {
-        printf("Good morning!\n");
-    } 
-    else if (hour < 18) {
-        printf("Good afternoon!\n");
-    } 
-    else {
-        printf("Good evening!\n");
+        }
     }
-    printf("\n==========[ Welcome to RESTAURANT ]==========\n");
-    printf("\nPlease select your menu :\n\n");
+
+    return 0;
 }
 
-void processOrder(int *total, int *amount, int price, const char *menu_name){
-
-    int amount_input;
-
-    printf("Enter amount of %s: ",menu_name);
-    scanf("%d", &amount_input);
-
-    if (amount_input > 20){
+void processOrder(int *total, int *quantity, int price, const char *menu_name) {
+    int unit;
+    printf("Enter amount of %s: ", menu_name);
+    scanf("%d", &unit);
+    if (unit > 20){
         printf("\n====================================\n");
         printf("That's too much, Please try again\n");
         printf("====================================\n");
         return;
     }
-
-    *total += price * amount_input;
-    *amount += amount_input;
-
-    printf("\n====================================\n");
-    printf("You chose %d %s\n",amount_input, menu_name);
-    printf("====================================\n");
-    printf("\nPlease select your next menu :\n\n");
+    *total += price * unit;
+    *quantity += unit;
+    printf("\nYou chose %d %s\n", unit, menu_name);
 }
 
-void showTotal(int khaokhamu, int khaomunkai, int khaokapaomukop, int total){
+void showTotal(int quantities[], int prices[], int total) {
+    showOrder(quantities, prices, menu_names);
+    printf("Total: %d kip\n\n", total);
+}
 
+void showOrder(int quantities[], int prices[], const char *menu_names[]) {
     printf("\n===========================\n");
-
-    if (khaokhamu > 0){
-        printf("Amount of Khaokhamu = %d\n",khaokhamu);
+    for (int i = 0; i < 7; ++i) {
+        if (quantities[i] > 0) {
+            printf("Amount of %s: %d (Price: %d kip each)\n", menu_names[i], quantities[i], prices[i]);
+        }
     }
-
-    if (khaomunkai > 0){
-        printf("Amount of Khaomunkai = %d\n",khaomunkai);
-    }
-
-    if (khaokapaomukop > 0){
-        printf("Amount of Khaokapaomukop = %d\n",khaokapaomukop);
-    }
-
     printf("===========================\n");
-    printf("Total = %d kip\n\n",total);
 }
 
-void menuList(){
-    printf("[1] khao kha mu 30000 kip\n");
-    printf("[2] khao mun kai 35000 kip\n");
-    printf("[3] khao kapao mukop 40000 kip\n");
-    printf("[4] Total\n");
-    printf("[5] Exit\n\n");
+void menuList() {
+    printf("[1] Stewed pork leg with rice \t\t| Price : 35000 kip\n");
+    printf("[2] Steamed chicken with rice \t\t| Price : 30000 kip\n");
+    printf("[3] Roasted duck with rice    \t\t| Price : 35000 kip\n");
+    printf("[4] BBQ red pork with rice    \t\t| Price : 35000 kip\n");
+    printf("[5] Crispy pork with rice     \t\t| Price : 40000 kip\n");
+    printf("[6] Pepsi                     \t\t| Price : 10000 kip\n");
+    printf("[7] Tigerhead water           \t\t| Price :  5000 kip\n");
+    printf("[8] Check your order\n");
+    printf("[9] Total\n");
+    printf("[10] Exit\n\n");
 }
