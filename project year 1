@@ -4,7 +4,15 @@ int quantities[7] = {0, 0, 0, 0, 0, 0, 0};
 
 const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
 
-const char *menu_names[7] = {"Stewed pork with rice", "Steamed chicken with rice", "Roasted duck with rice", "BBQ red pork with rice", "Crispy with rice", "Pepsi", "Tigerhead water"};
+const char *menu_names[] = {
+    "Stewed pork with rice", 
+    "Steamed chicken with rice", 
+    "Roasted duck with rice", 
+    "BBQ red pork with rice", 
+    "Crispy with rice", 
+    "Pepsi", 
+    "Tigerhead water"
+};
 
 int total = 0;
 
