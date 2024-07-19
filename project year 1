@@ -5,14 +5,13 @@ int quantities[7] = {0, 0, 0, 0, 0, 0, 0};
 const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
 
 const char *menu_names[] = {
-    "Stewed pork with rice", 
-    "Steamed chicken with rice", 
-    "Roasted duck with rice", 
-    "BBQ red pork with rice", 
-    "Crispy pork with rice", 
-    "Pepsi", 
-    "Tigerhead water"
-};
+    "Stewed pork with rice",     //prices[0] = 35000
+    "Steamed chicken with rice", //prices[1] = 30000
+    "Roasted duck with rice",    //prices[2] = 35000
+    "BBQ red pork with rice",    //prices[3] = 35000
+    "Crispy pork with rice",     //prices[4] = 40000
+    "Pepsi",                     //prices[5] = 10000
+    "Tigerhead water"};          //prices[6] =  5000
 
 int total = 0;
 
@@ -40,9 +39,11 @@ void main() {
         switch (choice) {
             case 1: case 2: case 3: case 4: case 5: case 6: case 7:
                 processOrder(&total, &quantities[choice - 1], prices[choice - 1], menu_names[choice - 1]);
+                printf("\nPlease select your next menu : \n\n");
                 break;
             case 8:
                 showOrder(quantities, prices, menu_names);
+                printf("\nPlease select your next menu : \n\n");
                 break;
             case 9:
                 showTotal(quantities, prices, total);
@@ -85,7 +86,7 @@ void showTotal(int quantities[], int prices[], int total) {
 
 void showOrder(int quantities[], int prices[], const char *menu_names[]) {
     printf("\n===========================\n");
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 7; i++) {
         if (quantities[i] > 0) {
             printf("Amount of %s: %d (Price: %d kip each)\n", menu_names[i], quantities[i], prices[i]);
         }
