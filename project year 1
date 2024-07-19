@@ -9,7 +9,7 @@ const char *menu_names[] = {
     "Steamed chicken with rice", 
     "Roasted duck with rice", 
     "BBQ red pork with rice", 
-    "Crispy with rice", 
+    "Crispy pork with rice", 
     "Pepsi", 
     "Tigerhead water"
 };
