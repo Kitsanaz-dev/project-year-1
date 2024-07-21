@@ -6,8 +6,8 @@ const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
 
 const char *menu_names[] = {
     "Stewed pork with rice",     //prices[0] = 35000
-    "Steamed chicken with rice", //prices[1] = 30000
-    "Roasted duck with rice",    //prices[2] = 35000
+    "Steamed chicken wrice",     //prices[1] = 30000
+    "Roasted duck rice",         //prices[2] = 35000
     "BBQ red pork with rice",    //prices[3] = 35000
     "Crispy pork with rice",     //prices[4] = 40000
     "Pepsi",                     //prices[5] = 10000
@@ -26,39 +26,32 @@ void main() {
     int choice = 0;
     int control = 1;
 
-    printf("\n==========[ Welcome to RESTAURANT ]==========\n");
-    printf("\nPlease select your menu :\n\n");
+    printf("\n=================[ Welcome to our RESTAURANT ]=================\n");
 
     while(control){
 
         menuList();      
 
-        printf("Please enter your choice: ");
+        printf("Please select a dish from the menu by entering its number: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1: case 2: case 3: case 4: case 5: case 6: case 7:
                 processOrder(&total, &quantities[choice - 1], prices[choice - 1], menu_names[choice - 1]);
-                printf("\nPlease select your next menu : \n\n");
                 break;
             case 8:
                 showOrder(quantities, prices, menu_names);
-                printf("\nPlease select your next menu : \n\n");
                 break;
             case 9:
                 showTotal(quantities, prices, total);
                 control = 0;
                 break;
-            case 10:
-                printf("\n====================================");
-                printf("\nExiting program...\n");
-                printf("====================================\n\n");
+            case 0:
+                printf("\nExiting program...\n\n");
                 control = 0;
                 break;
             default:
-                printf("\n====================================");
                 printf("\nInvalid choice, Please try again\n");
-                printf("====================================\n");
                 break;
         }
     }
@@ -66,12 +59,10 @@ void main() {
 
 void processOrder(int *total, int *quantity, int price, const char *menu_name) {
     int unit;
-    printf("Enter amount of %s: ", menu_name);
+    printf("Enter number of %s: ", menu_name);
     scanf("%d", &unit);
     if (unit > 20){
-        printf("\n====================================\n");
-        printf("That's too much, Please try again\n");
-        printf("====================================\n");
+        printf("\nThat's too much, Please try again\n");
         return;
     }
     *total += price * unit;
@@ -81,28 +72,32 @@ void processOrder(int *total, int *quantity, int price, const char *menu_name) {
 
 void showTotal(int quantities[], int prices[], int total) {
     showOrder(quantities, prices, menu_names);
-    printf("Total: %d kip\n\n", total);
+    printf("Total: %d kip\n", total);
+    printf("============================================================\n");
+    printf("Thank you for visiting our restaurant!!! Have a great day!!!\n");
+    printf("============================================================\n\n");
 }
 
 void showOrder(int quantities[], int prices[], const char *menu_names[]) {
-    printf("\n===========================\n");
-    for (int i = 0; i < 7; i++) {
+    printf("\n============================================================\n");
+    for (int i = 0; i < 7; ++i) {
         if (quantities[i] > 0) {
-            printf("Amount of %s: %d (Price: %d kip each)\n", menu_names[i], quantities[i], prices[i]);
+            printf("Number of %s: %d (Price: %d kip per each)\n", menu_names[i], quantities[i], prices[i]);
         }
     }
-    printf("===========================\n");
+    printf("============================================================\n");
 }
 
 void menuList() {
-    printf("[1] Stewed pork leg with rice \t\t| Price : 35000 kip\n");
-    printf("[2] Steamed chicken with rice \t\t| Price : 30000 kip\n");
-    printf("[3] Roasted duck with rice    \t\t| Price : 35000 kip\n");
-    printf("[4] BBQ red pork with rice    \t\t| Price : 35000 kip\n");
-    printf("[5] Crispy pork with rice     \t\t| Price : 40000 kip\n");
-    printf("[6] Pepsi                     \t\t| Price : 10000 kip\n");
-    printf("[7] Tigerhead water           \t\t| Price :  5000 kip\n");
-    printf("[8] Check your order\n");
+    printf("\nHere's the menu :\n\n");
+    printf("[1] Stewed pork leg with rice\t\t| Price : 35000 kip\n");
+    printf("[2] Steamed chicken rice     \t\t| Price : 30000 kip\n");
+    printf("[3] Roasted duck rice        \t\t| Price : 35000 kip\n");
+    printf("[4] BBQ red pork with rice   \t\t| Price : 35000 kip\n");
+    printf("[5] Crispy pork with rice    \t\t| Price : 40000 kip\n");
+    printf("[6] Pepsi                    \t\t| Price : 10000 kip\n");
+    printf("[7] Tigerhead water          \t\t| Price :  5000 kip\n");
+    printf("[8] Check your current order\n");
     printf("[9] Total\n");
-    printf("[10] Exit\n\n");
+    printf("[0] Exit\n\n");
 }
