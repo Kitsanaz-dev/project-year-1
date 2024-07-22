@@ -6,7 +6,7 @@ const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
 
 const char *menu_names[] = {
     "Stewed pork with rice",     //prices[0] = 35000
-    "Steamed chicken wrice",     //prices[1] = 30000
+    "Steamed chicken rice",      //prices[1] = 30000
     "Roasted duck rice",         //prices[2] = 35000
     "BBQ red pork with rice",    //prices[3] = 35000
     "Crispy pork with rice",     //prices[4] = 40000
