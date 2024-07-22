@@ -28,7 +28,7 @@ void main() {
 
     printf("\n=================[ Welcome to our RESTAURANT ]=================\n");
 
-    while(control){
+    while(control == 1){
 
         menuList();      
 
