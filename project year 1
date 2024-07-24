@@ -13,6 +13,7 @@ const char *menu_names[] = {
     "Pepsi",                     //prices[5] = 10000
     "Tigerhead water"};          //prices[6] =  5000
 
+int unit;
 int total = 0;
 
 // Function prototypes
@@ -58,7 +59,6 @@ void main() {
 }
 
 void processOrder(int *total, int *quantity, int price, const char *menu_name) {
-    int unit;
     printf("Enter number of %s: ", menu_name);
     scanf("%d", &unit);
     if (unit > 20){
@@ -80,7 +80,7 @@ void showTotal(int quantities[], int prices[], int total) {
 
 void showOrder(int quantities[], int prices[], const char *menu_names[]) {
     printf("\n============================================================\n");
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 7; i++) {
         if (quantities[i] > 0) {
             printf("Number of %s: %d (Price: %d kip per each)\n", menu_names[i], quantities[i], prices[i]);
         }
