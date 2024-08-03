@@ -5,21 +5,21 @@ int quantities[7] = {0, 0, 0, 0, 0, 0, 0};
 const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
 
 const char *menu_names[] = {
-    "Stewed pork with rice",     //prices[0] = 35000
-    "Steamed chicken rice",      //prices[1] = 30000
-    "Roasted duck rice",         //prices[2] = 35000
-    "BBQ red pork with rice",    //prices[3] = 35000
-    "Crispy pork with rice",     //prices[4] = 40000
-    "Pepsi",                     //prices[5] = 10000
-    "Tigerhead water"};          //prices[6] =  5000
+    "ເຂົ້າໝູ ຕຸນ (Stewed pork with rice)",     //prices[0] = 35000
+    "ເຂົ້າມັນໄກ່ (Steamed chicken rice)",       //prices[1] = 30000
+    "ເຂົ້າ ໜ້າ ເປັດ (Roasted duck rice)",       //prices[2] = 35000
+    "ເຂົ້າໝູແດງ (BBQ red pork with rice)",   //prices[3] = 35000
+    "ເຂົ້າໝູກອບ (Crispy pork with rice)",    //prices[4] = 40000
+    "ແປັບຊີ້ (Pepsi)",                       //prices[5] = 10000
+    "ນໍ້າດື່ມຫົວເສືອ (Tigerhead water)"};       //prices[6] =  5000
 
 int unit;
 int total = 0;
 
 // Function prototypes
 void processOrder();
-void showTotal();
 void showOrder();
+void showTotal();
 void menuList();
 
 void main() {
@@ -58,24 +58,16 @@ void main() {
     }
 }
 
-void processOrder(int *total, int *quantity, int price, const char *menu_name) {
+void processOrder(int *total, int *quantities, int prices, const char *menu_name) {
     printf("Enter number of %s: ", menu_name);
     scanf("%d", &unit);
     if (unit > 20){
         printf("\nThat's too much, Please try again\n");
         return;
     }
-    *total += price * unit;
-    *quantity += unit;
+    *total += prices * unit;
+    *quantities += unit;
     printf("\nYou chose %d %s\n", unit, menu_name);
-}
-
-void showTotal(int quantities[], int prices[], int total) {
-    showOrder(quantities, prices, menu_names);
-    printf("Total: %d kip\n", total);
-    printf("============================================================\n");
-    printf("Thank you for visiting our restaurant!!! Have a great day!!!\n");
-    printf("============================================================\n\n");
 }
 
 void showOrder(int quantities[], int prices[], const char *menu_names[]) {
@@ -86,6 +78,14 @@ void showOrder(int quantities[], int prices[], const char *menu_names[]) {
         }
     }
     printf("============================================================\n");
+}
+
+void showTotal(int quantities[], int prices[], int total) {
+    showOrder(quantities, prices, menu_names);
+    printf("Total: %d kip\n", total);
+    printf("============================================================\n");
+    printf("Thank you for visiting our restaurant!!! Have a great day!!!\n");
+    printf("============================================================\n\n");
 }
 
 void menuList() {
