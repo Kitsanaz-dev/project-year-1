@@ -5,9 +5,9 @@ int quantities[7] = {0, 0, 0, 0, 0, 0, 0};
 const int prices[7] = {35000, 30000, 35000, 35000, 40000, 10000, 5000};
 
 const char *menu_names[] = {
-    "ເຂົ້າໝູ ຕຸນ (Stewed pork with rice)",     //prices[0] = 35000
+    "ເຂົ້າໝູຕຸນ (Stewed pork with rice)",     //prices[0] = 35000
     "ເຂົ້າມັນໄກ່ (Steamed chicken rice)",       //prices[1] = 30000
-    "ເຂົ້າ ໜ້າ ເປັດ (Roasted duck rice)",       //prices[2] = 35000
+    "ເຂົ້າໜ້າເປັດ (Roasted duck rice)",        //prices[2] = 35000
     "ເຂົ້າໝູແດງ (BBQ red pork with rice)",   //prices[3] = 35000
     "ເຂົ້າໝູກອບ (Crispy pork with rice)",    //prices[4] = 40000
     "ແປັບຊີ້ (Pepsi)",                       //prices[5] = 10000
@@ -90,13 +90,13 @@ void showTotal(int quantities[], int prices[], int total) {
 
 void menuList() {
     printf("\nHere's the menu :\n\n");
-    printf("[1] Stewed pork leg with rice\t\t| Price : 35000 kip\n");
-    printf("[2] Steamed chicken rice     \t\t| Price : 30000 kip\n");
-    printf("[3] Roasted duck rice        \t\t| Price : 35000 kip\n");
-    printf("[4] BBQ red pork with rice   \t\t| Price : 35000 kip\n");
-    printf("[5] Crispy pork with rice    \t\t| Price : 40000 kip\n");
-    printf("[6] Pepsi                    \t\t| Price : 10000 kip\n");
-    printf("[7] Tigerhead water          \t\t| Price :  5000 kip\n");
+    printf("[1] ເຂົ້າໝູຕຸ໋ນ (Stewed pork with rice)    \t\t Price : 35000 kip\n");
+    printf("[2] ເຂົ້າມັນໄກ່ (Steamed chicken rice)     \t\t Price : 30000 kip\n");
+    printf("[3] ເຂົ້າໜ້າເປັດ (Roasted duck rice)       \t\t Price : 35000 kip\n");
+    printf("[4] ເຂົ້າໝູແດງ (BBQ red pork with rice)  \t\t Price : 35000 kip\n");
+    printf("[5] ເຂົ້າໝູກອບ (Crispy pork with rice)   \t\t Price : 40000 kip\n");
+    printf("[6] ແປັບຊີ້ (Pepsi)                      \t\t Price : 10000 kip\n");
+    printf("[7] ນໍ້າດື່ມຫົວເສືອ (Tigerhead water)       \t\t Price :  5000 kip\n");
     printf("[8] Check your current order\n");
     printf("[9] Total\n");
     printf("[0] Exit\n\n");
