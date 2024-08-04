@@ -58,8 +58,8 @@ void main() {
     }
 }
 
-void processOrder(int *total, int *quantities, int prices, const char *menu_name) {
-    printf("Enter number of %s: ", menu_name);
+void processOrder(int *total, int *quantities, int prices, const char *menu_names) {
+    printf("Enter number of %s: ", menu_names);
     scanf("%d", &unit);
     if (unit > 20){
         printf("\nThat's too much, Please try again\n");
@@ -67,7 +67,7 @@ void processOrder(int *total, int *quantities, int prices, const char *menu_name
     }
     *total += prices * unit;
     *quantities += unit;
-    printf("\nYou chose %d %s\n", unit, menu_name);
+    printf("\nYou chose %d %s\n", unit, menu_names);
 }
 
 void showOrder(int quantities[], int prices[], const char *menu_names[]) {
